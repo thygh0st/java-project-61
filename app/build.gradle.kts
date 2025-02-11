@@ -24,3 +24,8 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+// для запуска через `run`, иначе NoSuchElementException
+tasks.getByName("run", JavaExec::class) {
+    standardInput = System.`in`
+}
