@@ -11,8 +11,6 @@ class Even {
         final int MAX_GAME_VALUE = 200;
         String userAnswer;
         String calculatedAnswer;
-        String questionString = "Question: ";
-        String answerString = "Your answer: ";
         String wrongAnswerString = " is wrong answer ;(. Correct answer was ";
 
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
@@ -22,11 +20,11 @@ class Even {
                 calculatedAnswer = "no";
             else
                 calculatedAnswer = "yes";
-            System.out.println(questionString + randNumber);
+            System.out.println("Question: " + randNumber);
             Scanner sc = new Scanner(System.in);
-            System.out.print(answerString);
+            System.out.print("Your answer: ");
             userAnswer = sc.next();
-//            if (calculatedAnswer.equalsIgnoreCase()) { // TODO: уровень паранойи?
+//            if (calculatedAnswer.equalsIgnoreCase()) { // TODO: какой уровень паранойи?
             if (calculatedAnswer.equals(userAnswer)) {
                 System.out.println("Correct!");
             } else {
