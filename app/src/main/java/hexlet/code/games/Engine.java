@@ -11,7 +11,6 @@ public abstract class Engine {
     Random randGenerator = new Random();
 
     abstract String generateQuestion();
-    abstract boolean compareResult(String result/*, String reference*/);
 
     Engine(String userName, String gameGreetingString) {
         this.userName = userName;
@@ -38,5 +37,10 @@ public abstract class Engine {
         }
         if (iter == 3)
             System.out.println("Congratulations, " + userName);
+    }
+
+    boolean compareResult(String result) {
+//        return calculatedAnswer.equalsIgnoreCase(result);
+        return calculatedAnswer.equals(result);
     }
 }

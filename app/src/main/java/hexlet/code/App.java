@@ -1,6 +1,7 @@
 package hexlet.code;
 
 //import java.util.InputMismatchException;
+import hexlet.code.games.Calc;
 import hexlet.code.games.Engine;
 import hexlet.code.games.Even;
 
@@ -15,6 +16,7 @@ class App {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet\n" +
                            "2 - Even\n" +
+                           "3 - Calc\n" +
                            "0 - Exit"
         );
         System.out.print("Your choice: ");
