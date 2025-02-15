@@ -1,8 +1,5 @@
 package hexlet.code.games;
 
-//import java.util.Random;
-//import java.util.Scanner;
-
 public class Even extends Engine {
     int randNumber;
     final int MAX_GAME_VALUE = 200;

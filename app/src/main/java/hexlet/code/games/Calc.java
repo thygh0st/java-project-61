@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
 public class Calc extends Engine {
-
     public Calc(String userName) {
         super(userName, "What is the result of the expression?");
     }
