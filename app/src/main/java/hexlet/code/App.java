@@ -1,16 +1,22 @@
 package hexlet.code;
 
 //import java.util.InputMismatchException;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Engine;
+import hexlet.code.games.Even;
+
 import java.util.Scanner;
 
 class App {
     public static void main(String[] args) {
+        Engine pGame = null;
         Scanner sc = new Scanner(System.in);
         String userName4Print = "";
         int userGameChoice = 0;
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet\n" +
                            "2 - Even\n" +
+                           "3 - Calc\n" +
                            "0 - Exit"
         );
         System.out.print("Your choice: ");
@@ -29,8 +35,13 @@ class App {
 //        sc.close();
         switch (userGameChoice) {
             case 2:
-                Even.start(userName4Print);
+                pGame = new Even(userName4Print);
+                break;
+            case 3:
+                pGame = new Calc(userName4Print);
                 break;
         }
+        if (pGame != null)
+            pGame.start();
     }
 }
