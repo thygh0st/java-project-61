@@ -1,19 +1,37 @@
 package hexlet.code.games;
 
-public class Even extends Engine {
-    public Even(String userName) {
-        super(userName, "Answer 'yes' if the number is even, otherwise answer 'no'.");
-    }
+import  hexlet.code.Engine;
 
-    @Override
-    String generateQuestion() {
+
+public class Even {
+    private static String question;
+    private static String calculatedAnswer;
+
+    private static void runGameLogic() {
         int randNumber;
-        final int MAX_GAME_VALUE = 200;
-        randNumber = randGenerator.nextInt(MAX_GAME_VALUE);
+        final int maxGameValue = 200;
+        randNumber = Engine.randGenerator.nextInt(maxGameValue);
         if (randNumber % 2 == 1)
             calculatedAnswer = "no";
         else
             calculatedAnswer = "yes";
-        return Integer.toString(randNumber);
+        question = Integer.toString(randNumber);
+    }
+
+    public static void start() {
+        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        boolean isRightAnswer = true;
+        int iter = 0;
+
+        for (iter = 0; (iter < Engine.NUMBER_OF_ROUNDS) && isRightAnswer; iter++) {
+            runGameLogic();
+            isRightAnswer = Engine.runQuestion(question, calculatedAnswer);
+        }
+
+        if (iter == Engine.NUMBER_OF_ROUNDS) {
+            Engine.success();
+        } else {
+            Engine.failure();
+        }
     }
 }

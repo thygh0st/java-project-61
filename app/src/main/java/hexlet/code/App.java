@@ -6,10 +6,20 @@ import hexlet.code.games.*;
 import java.util.Scanner;
 
 class App {
+    static String userName4Print;
+//    enum MENU_OPTIONS {
+//        EXIT,
+//        GREET,
+//        EVEN,
+//        CALC,
+//        GCD,
+//        PROGRESSION,
+//        PRIME
+//    }
+
     public static void main(String[] args) {
         Engine pGame = null;
         Scanner sc = new Scanner(System.in);
-        String userName4Print = "";
         int userGameChoice = 0;
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet\n" +
@@ -36,22 +46,20 @@ class App {
 //        sc.close();
         switch (userGameChoice) {
             case 2:
-                pGame = new Even(userName4Print);
+                Even.start();
                 break;
             case 3:
-                pGame = new Calc(userName4Print);
+                Calc.start();
                 break;
             case 4:
-                pGame = new GCD(userName4Print);
+                GCD.start();
                 break;
             case 5:
-                pGame = new Progression(userName4Print);
+                Progression.start();
                 break;
             case 6:
-                pGame = new Prime(userName4Print);
+                Prime.start();
                 break;
         }
-        if (pGame != null)
-            pGame.start();
     }
 }

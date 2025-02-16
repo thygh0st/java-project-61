@@ -1,24 +1,42 @@
 package hexlet.code.games;
 
-public class GCD extends Engine {
-    public GCD(String userName) {
-        super(userName, "Find the greatest common divisor of given numbers.");
-    }
+import hexlet.code.Engine;
 
-    @Override
-    String generateQuestion() {
-        final int MAX_DIVISOR_VALUE = 10;
+public class GCD {
+    private static String question;
+    private static String calculatedAnswer;
 
-        int[] primes = {1, 2, 3, 5, 7, 11, 13, 17};
+    private static void runGameLogic () {
+        final int maxDivisorValue = 10;
 
-        int randIndex1 = randGenerator.nextInt(primes.length);
+        // простые числа + 1
+        int[] primesPlus = {1, 2, 3, 5, 7, 11, 13, 17};
+
+        int randIndex1 = Engine.randGenerator.nextInt(primesPlus.length);
         int randIndex2;
         do {
-            randIndex2 = randGenerator.nextInt(primes.length);
+            randIndex2 = Engine.randGenerator.nextInt(primesPlus.length);
         } while (randIndex2 == randIndex1);
-        int randDivisor = randGenerator.nextInt(MAX_DIVISOR_VALUE) + 1;
+        int randDivisor = Engine.randGenerator.nextInt(maxDivisorValue) + 1;
 
         calculatedAnswer = Integer.toString(randDivisor); // алгоритм от обратного, чтобы пользователям было проще
-        return (primes[randIndex1] * randDivisor) + " " + (primes[randIndex2] * randDivisor);
+        question = (primesPlus[randIndex1] * randDivisor) + " " + (primesPlus[randIndex2] * randDivisor);
+    }
+
+    public static void start() {
+        System.out.println("Find the greatest common divisor of given numbers.");
+        boolean isRightAnswer = true;
+        int iter = 0;
+
+        for (iter = 0; (iter < Engine.NUMBER_OF_ROUNDS) && isRightAnswer; iter++) {
+            runGameLogic();
+            isRightAnswer = Engine.runQuestion(question, calculatedAnswer);
+        }
+
+        if (iter == Engine.NUMBER_OF_ROUNDS) {
+            Engine.success();
+        } else {
+            Engine.failure();
+        }
     }
 }

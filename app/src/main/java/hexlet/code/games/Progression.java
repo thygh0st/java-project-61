@@ -1,29 +1,46 @@
 package hexlet.code.games;
 
-public class Progression extends Engine {
-    public Progression(String userName) {
-        super(userName, "What number is missing in the progression?");
-    }
+import hexlet.code.Engine;
 
-    @Override
-    String generateQuestion() {
-        final int MAX_START_NUMBER = 50;
-        final int PROG_LENGTH = 10;
-        final int MAX_INCREMENT = 14;
-        int startNumber = randGenerator.nextInt(MAX_START_NUMBER);
-        int missingIndex = randGenerator.nextInt(PROG_LENGTH);
-        int increment = randGenerator.nextInt(MAX_INCREMENT);
+public class Progression {
+    private static String question;
+    private static String calculatedAnswer;
+
+    private static void runGameLogic() {
+        final int maxStartNumber = 50;
+        final int progressionLength = 10;
+        final int maxIncrement = 14;
+        int startNumber = Engine.randGenerator.nextInt(maxStartNumber);
+        int missingIndex = Engine.randGenerator.nextInt(progressionLength);
+        int increment = Engine.randGenerator.nextInt(maxIncrement);
         StringBuilder resultProg = new StringBuilder();
 
         calculatedAnswer = Integer.toString(startNumber + missingIndex * increment);
 
-        for (int i = 0; i < PROG_LENGTH; i++) {
+        for (int i = 0; i < progressionLength; i++) {
             if (i == missingIndex)
                 resultProg.append("..");
             else
                 resultProg.append(startNumber + i * increment);
             resultProg.append(" ");
         }
-        return resultProg.toString();
+        question = resultProg.toString();
+    }
+
+    public static void start() {
+        System.out.println("What number is missing in the progression?");
+        boolean isRightAnswer = true;
+        int iter = 0;
+
+        for (iter = 0; (iter < Engine.NUMBER_OF_ROUNDS) && isRightAnswer; iter++) {
+            runGameLogic();
+            isRightAnswer = Engine.runQuestion(question, calculatedAnswer);
+        }
+
+        if (iter == Engine.NUMBER_OF_ROUNDS) {
+            Engine.success();
+        } else {
+            Engine.failure();
+        }
     }
 }

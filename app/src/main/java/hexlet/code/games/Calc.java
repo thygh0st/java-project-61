@@ -1,27 +1,44 @@
 package hexlet.code.games;
 
-public class Calc extends Engine {
-    public Calc(String userName) {
-        super(userName, "What is the result of the expression?");
-    }
+import hexlet.code.Engine;
 
-    @Override
-    String generateQuestion() {
-        final int MAX_OPERAND_VALUE = 150;
-        final int MAX_OPERAND_VALUE_MULT = 15;
+public class Calc {
+    private static String question;
+    private static String calculatedAnswer;
+
+    private static void runGameLogic() {
+        final int maxOperandValue = 150;
+        final int maxOperandValueMult = 15;
         char[] operators = {'*', '+', '-'};
         int operand1, operand2;
-        int operatorIndex = randGenerator.nextInt(operators.length);
+        int operatorIndex = Engine.randGenerator.nextInt(operators.length);
         if (operatorIndex > 0) {
-            operand1 = randGenerator.nextInt(MAX_OPERAND_VALUE);
-            operand2 = randGenerator.nextInt(MAX_OPERAND_VALUE);
+            operand1 = Engine.randGenerator.nextInt(maxOperandValue);
+            operand2 = Engine.randGenerator.nextInt(maxOperandValue);
             int result = (operatorIndex == 1) ? (operand1 + operand2) : (operand1 - operand2);
             calculatedAnswer = Integer.toString(result);
         } else {
-            operand1 = randGenerator.nextInt(MAX_OPERAND_VALUE_MULT);
-            operand2 = randGenerator.nextInt(MAX_OPERAND_VALUE_MULT);
+            operand1 = Engine.randGenerator.nextInt(maxOperandValueMult);
+            operand2 = Engine.randGenerator.nextInt(maxOperandValueMult);
             calculatedAnswer = Integer.toString(operand1 * operand2);
         }
-        return (Integer.toString(operand1) + operators[operatorIndex] + Integer.toString(operand2));
+        question = Integer.toString(operand1) + " " + operators[operatorIndex] + " " + Integer.toString(operand2);
+    }
+
+    public static void start() {
+        System.out.println("What is the result of the expression?");
+        boolean isRightAnswer = true;
+        int iter = 0;
+
+        for (iter = 0; (iter < Engine.NUMBER_OF_ROUNDS) && isRightAnswer; iter++) {
+            runGameLogic();
+            isRightAnswer = Engine.runQuestion(question, calculatedAnswer);
+        }
+
+        if (iter == Engine.NUMBER_OF_ROUNDS) {
+            Engine.success();
+        } else {
+            Engine.failure();
+        }
     }
 }
