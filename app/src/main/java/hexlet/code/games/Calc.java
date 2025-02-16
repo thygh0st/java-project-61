@@ -22,6 +22,6 @@ public class Calc extends Engine {
             operand2 = randGenerator.nextInt(MAX_OPERAND_VALUE_MULT);
             calculatedAnswer = Integer.toString(operand1 * operand2);
         }
-        return (Integer.toString(operand1) + operators[operatorIndex] + Integer.toString(operand2));
+        return (Integer.toString(operand1) + " " + operators[operatorIndex] + " " + Integer.toString(operand2));
     }
 }
