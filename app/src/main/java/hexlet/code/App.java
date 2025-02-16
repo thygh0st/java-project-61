@@ -17,6 +17,7 @@ class App {
                            "3 - Calc\n" +
                            "4 - GCD\n" +
                            "5 - Progression\n" +
+                           "6 - Prime\n" +
                            "0 - Exit"
         );
         System.out.print("Your choice: ");
@@ -45,6 +46,9 @@ class App {
                 break;
             case 5:
                 pGame = new Progression(userName4Print);
+                break;
+            case 6:
+                pGame = new Prime(userName4Print);
                 break;
         }
         if (pGame != null)
