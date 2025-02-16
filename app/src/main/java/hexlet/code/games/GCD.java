@@ -28,9 +28,11 @@ public class GCD {
         boolean isRightAnswer = true;
         int iter = 0;
 
-        for (iter = 0; (iter < Engine.NUMBER_OF_ROUNDS) && isRightAnswer; iter++) {
+        for (iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
             runGameLogic();
             isRightAnswer = Engine.runQuestion(question, calculatedAnswer);
+            if (!isRightAnswer)
+                break;
         }
 
         if (iter == Engine.NUMBER_OF_ROUNDS) {

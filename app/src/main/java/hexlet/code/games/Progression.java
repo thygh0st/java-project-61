@@ -9,10 +9,10 @@ public class Progression {
     private static void runGameLogic() {
         final int maxStartNumber = 50;
         final int progressionLength = 10;
-        final int maxIncrement = 14;
+        final int maxIncrement = 13;
         int startNumber = Engine.randGenerator.nextInt(maxStartNumber);
         int missingIndex = Engine.randGenerator.nextInt(progressionLength);
-        int increment = Engine.randGenerator.nextInt(maxIncrement);
+        int increment = Engine.randGenerator.nextInt(maxIncrement) + 1;
         StringBuilder resultProg = new StringBuilder();
 
         calculatedAnswer = Integer.toString(startNumber + missingIndex * increment);
@@ -32,9 +32,11 @@ public class Progression {
         boolean isRightAnswer = true;
         int iter = 0;
 
-        for (iter = 0; (iter < Engine.NUMBER_OF_ROUNDS) && isRightAnswer; iter++) {
+        for (iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
             runGameLogic();
             isRightAnswer = Engine.runQuestion(question, calculatedAnswer);
+            if (!isRightAnswer)
+                break;
         }
 
         if (iter == Engine.NUMBER_OF_ROUNDS) {

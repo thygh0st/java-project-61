@@ -18,9 +18,8 @@ class App {
 //    }
 
     public static void main(String[] args) {
-        Engine pGame = null;
         Scanner sc = new Scanner(System.in);
-        int userGameChoice = 0;
+        int userGameChoice;
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet\n" +
                            "2 - Even\n" +
