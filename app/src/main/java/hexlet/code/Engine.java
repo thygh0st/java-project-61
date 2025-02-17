@@ -4,9 +4,9 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Engine {
-    static String wrongAnswerString = " is wrong answer ;(. Correct answer was ";
+    private static final String wrongAnswerString = " is wrong answer ;(. Correct answer was ";
     public static final int NUMBER_OF_ROUNDS = 3;
-    public static Random randGenerator = new Random();
+    public static final Random randGenerator = new Random();
 
     public static boolean runQuestion(String question, String calculatedAnswer) {
         int iter;
@@ -26,9 +26,9 @@ public class Engine {
     }
 
     public static void success() {
-        System.out.println("Congratulations, " + App.userName4Print);
+        System.out.println("Congratulations, " + App.getUserName());
     }
     public static void failure() {
-        System.out.println("Let's try again, " + App.userName4Print);
+        System.out.println("Let's try again, " + App.getUserName());
     }
 }

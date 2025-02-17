@@ -1,7 +1,11 @@
 package hexlet.code;
 
 //import java.util.InputMismatchException;
-import hexlet.code.games.*;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 
@@ -16,18 +20,21 @@ class App {
 //        PROGRESSION,
 //        PRIME
 //    }
+    public static String getUserName() {
+        return userName4Print;
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int userGameChoice;
         System.out.println("Please enter the game number and press Enter.");
-        System.out.println("1 - Greet\n" +
-                           "2 - Even\n" +
-                           "3 - Calc\n" +
-                           "4 - GCD\n" +
-                           "5 - Progression\n" +
-                           "6 - Prime\n" +
-                           "0 - Exit"
+        System.out.println("1 - Greet\n"
+                            + "2 - Even\n"
+                            + "3 - Calc\n"
+                            + "4 - GCD\n"
+                            + "5 - Progression\n"
+                            + "6 - Prime\n"
+                            + "0 - Exit"
         );
         System.out.print("Your choice: ");
         userGameChoice = sc.nextInt();
@@ -59,6 +66,7 @@ class App {
             case 6:
                 Prime.start();
                 break;
+            default:
         }
     }
 }

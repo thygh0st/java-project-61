@@ -6,11 +6,11 @@ public class GCD {
     private static String question;
     private static String calculatedAnswer;
 
-    private static void runGameLogic () {
+    private static void runGameLogic() {
         final int maxDivisorValue = 10;
 
         // простые числа + 1
-        int[] primesPlus = {1, 2, 3, 5, 7, 11, 13, 17};
+        final int[] primesPlus = {1, 2, 3, 5, 7, 11, 13, 17};
 
         int randIndex1 = Engine.randGenerator.nextInt(primesPlus.length);
         int randIndex2;
@@ -31,8 +31,9 @@ public class GCD {
         for (iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
             runGameLogic();
             isRightAnswer = Engine.runQuestion(question, calculatedAnswer);
-            if (!isRightAnswer)
+            if (!isRightAnswer) {
                 break;
+            }
         }
 
         if (iter == Engine.NUMBER_OF_ROUNDS) {

@@ -11,10 +11,11 @@ public class Even {
         int randNumber;
         final int maxGameValue = 200;
         randNumber = Engine.randGenerator.nextInt(maxGameValue);
-        if (randNumber % 2 == 1)
+        if (randNumber % 2 == 1) {
             calculatedAnswer = "no";
-        else
+        } else {
             calculatedAnswer = "yes";
+        }
         question = Integer.toString(randNumber);
     }
 
@@ -26,8 +27,9 @@ public class Even {
         for (iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
             runGameLogic();
             isRightAnswer = Engine.runQuestion(question, calculatedAnswer);
-            if (!isRightAnswer)
+            if (!isRightAnswer) {
                 break;
+            }
         }
 
         if (iter == Engine.NUMBER_OF_ROUNDS) {

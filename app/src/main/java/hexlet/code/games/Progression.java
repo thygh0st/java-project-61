@@ -18,10 +18,11 @@ public class Progression {
         calculatedAnswer = Integer.toString(startNumber + missingIndex * increment);
 
         for (int i = 0; i < progressionLength; i++) {
-            if (i == missingIndex)
+            if (i == missingIndex) {
                 resultProg.append("..");
-            else
-                resultProg.append(startNumber + i * increment);
+            } else {
+                    resultProg.append(startNumber + i * increment);
+            }
             resultProg.append(" ");
         }
         question = resultProg.toString();
@@ -35,8 +36,9 @@ public class Progression {
         for (iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
             runGameLogic();
             isRightAnswer = Engine.runQuestion(question, calculatedAnswer);
-            if (!isRightAnswer)
+            if (!isRightAnswer) {
                 break;
+            }
         }
 
         if (iter == Engine.NUMBER_OF_ROUNDS) {

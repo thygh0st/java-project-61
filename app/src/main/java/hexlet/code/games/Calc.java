@@ -10,7 +10,8 @@ public class Calc {
         final int maxOperandValue = 150;
         final int maxOperandValueMult = 15;
         char[] operators = {'*', '+', '-'};
-        int operand1, operand2;
+        int operand1;
+        int operand2;
         int operatorIndex = Engine.randGenerator.nextInt(operators.length);
         if (operatorIndex > 0) {
             operand1 = Engine.randGenerator.nextInt(maxOperandValue);
@@ -33,8 +34,9 @@ public class Calc {
         for (iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
             runGameLogic();
             isRightAnswer = Engine.runQuestion(question, calculatedAnswer);
-            if (!isRightAnswer)
+            if (!isRightAnswer) {
                 break;
+            }
         }
 
         if (iter == Engine.NUMBER_OF_ROUNDS) {
