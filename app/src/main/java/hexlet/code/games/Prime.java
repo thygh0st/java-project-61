@@ -16,10 +16,10 @@ public class Prime {
         // при некоторых k число будет не простое, но будет делиться либо на 5, либо на 7 (в нашем диапазоне k)
         // ограничиваем k > 1, чтобы не добавлять проверку через цикл
         // генерируем числа: 6k - 1 | 6k | 6k + 1
-        k = Engine.randGenerator.nextInt(maxKValue) + 2;
-        int baseNum = 6 * k;
-        int offset = Engine.randGenerator.nextInt(2);
-        int randNumber = ((Engine.randGenerator.nextInt(2) == 1) ? (baseNum + offset) : (baseNum - offset));
+        k = Engine.RAND_GEN.nextInt(maxKValue) + 2;
+        int baseNum = baseMult * k;
+        int offset = Engine.RAND_GEN.nextInt(2);
+        int randNumber = ((Engine.RAND_GEN.nextInt(2) == 1) ? (baseNum + offset) : (baseNum - offset));
         if ((randNumber % possibleDivisor1 == 0) || (randNumber % possibleDivisor2 == 0) || (offset == 0)) {
             calculatedAnswer = "no";
         } else {

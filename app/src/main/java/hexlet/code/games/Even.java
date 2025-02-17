@@ -10,7 +10,7 @@ public class Even {
     private static void runGameLogic() {
         int randNumber;
         final int maxGameValue = 200;
-        randNumber = Engine.randGenerator.nextInt(maxGameValue);
+        randNumber = Engine.RAND_GEN.nextInt(maxGameValue);
         if (randNumber % 2 == 1) {
             calculatedAnswer = "no";
         } else {

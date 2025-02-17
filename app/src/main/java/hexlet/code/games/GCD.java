@@ -12,12 +12,12 @@ public class GCD {
         // простые числа + 1
         final int[] primesPlus = {1, 2, 3, 5, 7, 11, 13, 17};
 
-        int randIndex1 = Engine.randGenerator.nextInt(primesPlus.length);
+        int randIndex1 = Engine.RAND_GEN.nextInt(primesPlus.length);
         int randIndex2;
         do {
-            randIndex2 = Engine.randGenerator.nextInt(primesPlus.length);
+            randIndex2 = Engine.RAND_GEN.nextInt(primesPlus.length);
         } while (randIndex2 == randIndex1);
-        int randDivisor = Engine.randGenerator.nextInt(maxDivisorValue) + 1;
+        int randDivisor = Engine.RAND_GEN.nextInt(maxDivisorValue) + 1;
 
         calculatedAnswer = Integer.toString(randDivisor); // алгоритм от обратного, чтобы пользователям было проще
         question = (primesPlus[randIndex1] * randDivisor) + " " + (primesPlus[randIndex2] * randDivisor);

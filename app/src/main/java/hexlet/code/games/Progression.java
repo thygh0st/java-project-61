@@ -10,9 +10,9 @@ public class Progression {
         final int maxStartNumber = 50;
         final int progressionLength = 10;
         final int maxIncrement = 13;
-        int startNumber = Engine.randGenerator.nextInt(maxStartNumber);
-        int missingIndex = Engine.randGenerator.nextInt(progressionLength);
-        int increment = Engine.randGenerator.nextInt(maxIncrement) + 1;
+        int startNumber = Engine.RAND_GEN.nextInt(maxStartNumber);
+        int missingIndex = Engine.RAND_GEN.nextInt(progressionLength);
+        int increment = Engine.RAND_GEN.nextInt(maxIncrement) + 1;
         StringBuilder resultProg = new StringBuilder();
 
         calculatedAnswer = Integer.toString(startNumber + missingIndex * increment);

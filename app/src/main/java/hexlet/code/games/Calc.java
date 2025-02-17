@@ -12,15 +12,15 @@ public class Calc {
         char[] operators = {'*', '+', '-'};
         int operand1;
         int operand2;
-        int operatorIndex = Engine.randGenerator.nextInt(operators.length);
+        int operatorIndex = Engine.RAND_GEN.nextInt(operators.length);
         if (operatorIndex > 0) {
-            operand1 = Engine.randGenerator.nextInt(maxOperandValue);
-            operand2 = Engine.randGenerator.nextInt(maxOperandValue);
+            operand1 = Engine.RAND_GEN.nextInt(maxOperandValue);
+            operand2 = Engine.RAND_GEN.nextInt(maxOperandValue);
             int result = (operatorIndex == 1) ? (operand1 + operand2) : (operand1 - operand2);
             calculatedAnswer = Integer.toString(result);
         } else {
-            operand1 = Engine.randGenerator.nextInt(maxOperandValueMult);
-            operand2 = Engine.randGenerator.nextInt(maxOperandValueMult);
+            operand1 = Engine.RAND_GEN.nextInt(maxOperandValueMult);
+            operand2 = Engine.RAND_GEN.nextInt(maxOperandValueMult);
             calculatedAnswer = Integer.toString(operand1 * operand2);
         }
         question = Integer.toString(operand1) + " " + operators[operatorIndex] + " " + Integer.toString(operand2);

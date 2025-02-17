@@ -10,7 +10,7 @@ import hexlet.code.games.Progression;
 import java.util.Scanner;
 
 class App {
-    static String userName4Print;
+    private static String USERNAME_4_PRINT;
 //    enum MENU_OPTIONS {
 //        EXIT,
 //        GREET,
@@ -21,20 +21,25 @@ class App {
 //        PRIME
 //    }
     public static String getUserName() {
-        return userName4Print;
+        return USERNAME_4_PRINT;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        final int evenOption = 2;
+        final int calcOption = 3;
+        final int gcdOption = 4;
+        final int progOption = 5;
+        final int primeOption = 6;
         int userGameChoice;
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet\n"
-                            + "2 - Even\n"
-                            + "3 - Calc\n"
-                            + "4 - GCD\n"
-                            + "5 - Progression\n"
-                            + "6 - Prime\n"
-                            + "0 - Exit"
+                        + "2 - Even\n"
+                        + "3 - Calc\n"
+                        + "4 - GCD\n"
+                        + "5 - Progression\n"
+                        + "6 - Prime\n"
+                        + "0 - Exit"
         );
         System.out.print("Your choice: ");
         userGameChoice = sc.nextInt();
@@ -46,24 +51,24 @@ class App {
         if (userGameChoice != 0) {
             System.out.println("Welcome to the Brain Games!");
             System.out.print("May I have your name? ");
-            userName4Print = sc.next() + "!"; // сразу добавляем '!', чтобы не прибавлять при каждой печати
-            System.out.println("Hello, " + userName4Print);
+            USERNAME_4_PRINT = sc.next() + "!"; // сразу добавляем '!', чтобы не прибавлять при каждой печати
+            System.out.println("Hello, " + USERNAME_4_PRINT);
         }
 //        sc.close();
         switch (userGameChoice) {
-            case 2:
+            case evenOption:
                 Even.start();
                 break;
-            case 3:
+            case calcOption:
                 Calc.start();
                 break;
-            case 4:
+            case gcdOption:
                 GCD.start();
                 break;
-            case 5:
+            case progOption:
                 Progression.start();
                 break;
-            case 6:
+            case primeOption:
                 Prime.start();
                 break;
             default:
