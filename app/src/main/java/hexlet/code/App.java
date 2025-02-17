@@ -10,7 +10,7 @@ import hexlet.code.games.Progression;
 import java.util.Scanner;
 
 class App {
-    private static String USERNAME_4_PRINT;
+    private static String username4Print;
 //    enum MENU_OPTIONS {
 //        EXIT,
 //        GREET,
@@ -21,7 +21,7 @@ class App {
 //        PRIME
 //    }
     public static String getUserName() {
-        return USERNAME_4_PRINT;
+        return username4Print;
     }
 
     public static void main(String[] args) {
@@ -51,8 +51,8 @@ class App {
         if (userGameChoice != 0) {
             System.out.println("Welcome to the Brain Games!");
             System.out.print("May I have your name? ");
-            USERNAME_4_PRINT = sc.next() + "!"; // сразу добавляем '!', чтобы не прибавлять при каждой печати
-            System.out.println("Hello, " + USERNAME_4_PRINT);
+            username4Print = sc.next() + "!"; // сразу добавляем '!', чтобы не прибавлять при каждой печати
+            System.out.println("Hello, " + username4Print);
         }
 //        sc.close();
         switch (userGameChoice) {
