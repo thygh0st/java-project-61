@@ -11,18 +11,13 @@
 
 ### Демонстрации игр:
 
-#### [Even](https://asciinema.org/a/Egv53YPkAR45GaUjpNYrKXHt9 "Open asciinema demo of Even game")
-Определение четного числа
-#### [Calc](https://asciinema.org/a/jnNfgTk8V7LtmJukheVgAlts4 "Open asciinema demo of Calc game")
-Арифметические выражения для вычисления
-#### [GCD](https://asciinema.org/a/l0OeHqji4p6fyQloktoT72d2s "Open asciinema demo of GCD game")
-Определение наибольшего общего делителя
-#### [Progression](https://asciinema.org/a/s4OGgsO9EMv7VLFQsFcwDMhbj "Open asciinema demo of Progression game")
-Определение пропущенного числа в прогрессии
-#### [Prime](https://asciinema.org/a/0FYddlti7xX76GsWogUTsL2V2 "Open asciinema demo of Prime game")
-Определение простого числа
+#### [Even](https://asciinema.org/a/Egv53YPkAR45GaUjpNYrKXHt9 "Open asciinema demo of Even game") - Определение четного числа
+#### [Calc](https://asciinema.org/a/jnNfgTk8V7LtmJukheVgAlts4 "Open asciinema demo of Calc game") - Арифметические выражения для вычисления
+#### [GCD](https://asciinema.org/a/l0OeHqji4p6fyQloktoT72d2s "Open asciinema demo of GCD game") - Определение наибольшего общего делителя
+#### [Progression](https://asciinema.org/a/s4OGgsO9EMv7VLFQsFcwDMhbj "Open asciinema demo of Progression game") - Определение пропущенного числа в прогрессии
+#### [Prime](https://asciinema.org/a/0FYddlti7xX76GsWogUTsL2V2 "Open asciinema demo of Prime game") - Определение простого числа
 
-### Как запустить
+### Как запустить:
 #### Сборка:
 ```shell
 make build
