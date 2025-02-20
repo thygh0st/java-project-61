@@ -19,9 +19,9 @@ application {
 //dependencies {
 //}
 
-tasks.test {
-    useJUnitPlatform()
-}
+//tasks.test {
+//    useJUnitPlatform()
+//}
 
 // для запуска через `run`, иначе NoSuchElementException
 tasks.getByName("run", JavaExec::class) {
