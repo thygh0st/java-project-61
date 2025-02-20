@@ -1,5 +1,7 @@
-build-dist: # собираем программу
+build: # собираем программу
 	./gradlew clean
 	./gradlew installDist
-run-dist: # запускаем собранную программу
+run: # запускаем собранную программу
 	./build/install/app/bin/app
+
+.PHONY: build
