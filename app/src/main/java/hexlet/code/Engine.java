@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import java.util.Scanner;
 import java.util.Random;
 
 public class Engine {
@@ -9,13 +8,11 @@ public class Engine {
     public static final Random RAND_GEN = new Random();
 
     public static boolean runQuestion(String question, String calculatedAnswer) {
-        int iter;
         String userAnswer;
 
         System.out.println("Question: " + question);
-        Scanner sc = new Scanner(System.in);
         System.out.print("Your answer: ");
-        userAnswer = sc.next();
+        userAnswer = App.getScanner().next();
         if (calculatedAnswer.equals(userAnswer)) {
             System.out.println("Correct!");
             return true;

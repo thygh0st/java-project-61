@@ -1,6 +1,5 @@
 package hexlet.code;
 
-//import java.util.InputMismatchException;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
@@ -8,9 +7,9 @@ import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
 
 import java.util.Scanner;
+//import java.util.InputMismatchException;
 
 class App {
-    private static String username4Print;
 //    enum MENU_OPTIONS {
 //        EXIT,
 //        GREET,
@@ -19,13 +18,18 @@ class App {
 //        GCD,
 //        PROGRESSION,
 //        PRIME
-//    }
+    //    }
+    private static String username4Print;
     public static String getUserName() {
         return username4Print;
     }
+    private static Scanner sc;
+    public static Scanner getScanner() {
+        return sc;
+    }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         final int evenOption = 2;
         final int calcOption = 3;
         final int gcdOption = 4;
@@ -54,7 +58,6 @@ class App {
             username4Print = sc.next() + "!"; // сразу добавляем '!', чтобы не прибавлять при каждой печати
             System.out.println("Hello, " + username4Print);
         }
-//        sc.close();
         switch (userGameChoice) {
             case evenOption:
                 Even.start();
@@ -73,5 +76,6 @@ class App {
                 break;
             default:
         }
+        sc.close();
     }
 }
