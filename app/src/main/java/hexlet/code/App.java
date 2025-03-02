@@ -19,10 +19,6 @@ class App {
 //        PROGRESSION,
 //        PRIME
     //    }
-    private static String username4Print;
-    public static String getUserName() {
-        return username4Print;
-    }
     private static Scanner sc;
     public static Scanner getScanner() {
         return sc;
@@ -53,10 +49,7 @@ class App {
 //            System.out.println("That's not a number, try again.");
 //        }
         if (userGameChoice != 0) {
-            System.out.println("Welcome to the Brain Games!");
-            System.out.print("May I have your name? ");
-            username4Print = sc.next() + "!"; // сразу добавляем '!', чтобы не прибавлять при каждой печати
-            System.out.println("Hello, " + username4Print);
+            Engine.introduction();
         }
         switch (userGameChoice) {
             case evenOption:
