@@ -3,48 +3,46 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Progression {
-    private static String question;
-    private static String calculatedAnswer;
+    private static final String[][] pairs = new String[2][Engine.NUMBER_OF_ROUNDS];
+    private static int missingElem;
 
-    private static void runGameLogic() {
+    private static int[] genProgArray() {
         final int maxStartNumber = 50;
-        final int progressionLength = 10;
         final int maxIncrement = 13;
+        final int progressionLength = 10;
         int startNumber = Engine.RAND_GEN.nextInt(maxStartNumber);
-        int missingIndex = Engine.RAND_GEN.nextInt(progressionLength);
         int increment = Engine.RAND_GEN.nextInt(maxIncrement) + 1;
-        StringBuilder resultProg = new StringBuilder();
 
-        calculatedAnswer = Integer.toString(startNumber + missingIndex * increment);
-
+        int[] intArray = new int[progressionLength];
         for (int i = 0; i < progressionLength; i++) {
+            intArray[i] = startNumber + i * increment;
+        }
+        return intArray;
+    }
+    private static String generateQuestion() {
+        var initialProg = genProgArray();
+        int missingIndex = Engine.RAND_GEN.nextInt(initialProg.length);
+
+        missingElem = initialProg[missingIndex];
+
+        StringBuilder resultProg = new StringBuilder();
+        for (int i = 0; i < initialProg.length; i++) {
             if (i == missingIndex) {
                 resultProg.append("..");
             } else {
-                    resultProg.append(startNumber + i * increment);
+                resultProg.append(initialProg[i]);
             }
             resultProg.append(" ");
         }
-        question = resultProg.toString();
+
+        return resultProg.toString();
     }
 
     public static void start() {
-        System.out.println("What number is missing in the progression?");
-        boolean isRightAnswer = true;
-        int iter = 0;
-
-        for (iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
-            runGameLogic();
-            isRightAnswer = Engine.runQuestion(question, calculatedAnswer);
-            if (!isRightAnswer) {
-                break;
-            }
+        for (int iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
+            pairs[0][iter] = generateQuestion();
+            pairs[1][iter] = Integer.toString(missingElem); // переписываем переменную каждую итерацию
         }
-
-        if (iter == Engine.NUMBER_OF_ROUNDS) {
-            Engine.success();
-        } else {
-            Engine.failure();
-        }
+        Engine.runQuestions("What number is missing in the progression?", pairs);
     }
 }
