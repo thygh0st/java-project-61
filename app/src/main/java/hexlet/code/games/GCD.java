@@ -3,7 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class GCD {
-    private static final String[][] pairs = new String[2][Engine.NUMBER_OF_ROUNDS];
+    private static final String[][] QA_PAIRS = new String[2][Engine.NUMBER_OF_ROUNDS];
     private static int currentDivisor; // переменная для временного хранения НОД,
     // пока не придумал способа лучше (с учетом моего алгоритма) для разделения генерации вопроса и ответа
 
@@ -18,16 +18,17 @@ public class GCD {
         do {
             randIndex2 = Engine.RAND_GEN.nextInt(primesPlus.length);
         } while (randIndex2 == randIndex1);
-        currentDivisor = Engine.RAND_GEN.nextInt(maxDivisorValue) + 1; // алгоритм от обратного, чтобы пользователям было проще
+        // алгоритм от обратного, чтобы пользователям было проще
+        currentDivisor = Engine.RAND_GEN.nextInt(maxDivisorValue) + 1;
 
         return (primesPlus[randIndex1] * currentDivisor) + " " + (primesPlus[randIndex2] * currentDivisor);
     }
 
     public static void start() {
         for (int iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
-            pairs[0][iter] = generateQuestion();
-            pairs[1][iter] = Integer.toString(currentDivisor); // переписываем переменную каждую итерацию
+            QA_PAIRS[0][iter] = generateQuestion();
+            QA_PAIRS[1][iter] = Integer.toString(currentDivisor); // переписываем переменную каждую итерацию
         }
-        Engine.runQuestions("Find the greatest common divisor of given numbers.", pairs);
+        Engine.runQuestions("Find the greatest common divisor of given numbers.", QA_PAIRS);
     }
 }

@@ -3,7 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Progression {
-    private static final String[][] pairs = new String[2][Engine.NUMBER_OF_ROUNDS];
+    private static final String[][] QA_PAIRS = new String[2][Engine.NUMBER_OF_ROUNDS];
     private static int missingElem;
 
     private static int[] genProgArray() {
@@ -40,9 +40,9 @@ public class Progression {
 
     public static void start() {
         for (int iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
-            pairs[0][iter] = generateQuestion();
-            pairs[1][iter] = Integer.toString(missingElem); // переписываем переменную каждую итерацию
+            QA_PAIRS[0][iter] = generateQuestion();
+            QA_PAIRS[1][iter] = Integer.toString(missingElem); // переписываем переменную каждую итерацию
         }
-        Engine.runQuestions("What number is missing in the progression?", pairs);
+        Engine.runQuestions("What number is missing in the progression?", QA_PAIRS);
     }
 }

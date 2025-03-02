@@ -3,7 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Prime {
-    private static final String[][] pairs = new String[2][Engine.NUMBER_OF_ROUNDS];
+    private static final String[][] QA_PAIRS = new String[2][Engine.NUMBER_OF_ROUNDS];
 
     private static String isPrime(String num) {
         // при некоторых k число будет не простое, но будет делиться либо на 5, либо на 7 (в нашем диапазоне k)
@@ -36,9 +36,9 @@ public class Prime {
 
     public static void start() {
         for (int iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
-            pairs[0][iter] = generateQuestion();
-            pairs[1][iter] = isPrime(pairs[0][iter]); // переписываем переменную каждую итерацию
+            QA_PAIRS[0][iter] = generateQuestion();
+            QA_PAIRS[1][iter] = isPrime(QA_PAIRS[0][iter]); // переписываем переменную каждую итерацию
         }
-        Engine.runQuestions("Answer 'yes' if given number is prime. Otherwise answer 'no'.", pairs);
+        Engine.runQuestions("Answer 'yes' if given number is prime. Otherwise answer 'no'.", QA_PAIRS);
     }
 }

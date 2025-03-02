@@ -3,7 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Calc {
-    private static final String[][] pairs = new String[2][Engine.NUMBER_OF_ROUNDS];
+    private static final String[][] QA_PAIRS = new String[2][Engine.NUMBER_OF_ROUNDS];
 
     private static String calculate(String expr) {
         var exprSplit = expr.split(" ");
@@ -45,9 +45,9 @@ public class Calc {
 
     public static void start() {
         for (int iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
-            pairs[0][iter] = generateQuestion();
-            pairs[1][iter] = calculate(pairs[0][iter]);
+            QA_PAIRS[0][iter] = generateQuestion();
+            QA_PAIRS[1][iter] = calculate(QA_PAIRS[0][iter]);
         }
-        Engine.runQuestions("What is the result of the expression?", pairs);
+        Engine.runQuestions("What is the result of the expression?", QA_PAIRS);
     }
 }
