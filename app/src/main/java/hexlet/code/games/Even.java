@@ -3,13 +3,13 @@ package hexlet.code.games;
 import  hexlet.code.Engine;
 
 public class Even {
-    private static final String[][] QA_PAIRS = new String[2][Engine.NUMBER_OF_ROUNDS];
+    private static final String[][] QA_PAIRS = new String[Engine.NUMBER_OF_ROUNDS][2];
 
-    private static String isEven(String number) {
+    private static boolean isEven(String number) {
         if (Integer.parseInt(number) % 2 == 1) {
-            return "no";
+            return false;
         }
-        return "yes";
+        return true;
     }
     private static String generateQuestion() {
         int randNumber;
@@ -20,9 +20,9 @@ public class Even {
     }
 
     public static void start() {
-        for (int iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
-            QA_PAIRS[0][iter] = generateQuestion();
-            QA_PAIRS[1][iter] = isEven(QA_PAIRS[0][iter]);
+        for (var pair : QA_PAIRS) {
+            pair[0] = generateQuestion();
+            pair[1] = isEven(pair[0]) ? "yes" : "no";
         }
         Engine.runQuestions("Answer 'yes' if the number is even, otherwise answer 'no'.", QA_PAIRS);
     }

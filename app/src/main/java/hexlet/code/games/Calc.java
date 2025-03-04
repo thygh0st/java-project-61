@@ -3,28 +3,26 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Calc {
-    private static final String[][] QA_PAIRS = new String[2][Engine.NUMBER_OF_ROUNDS];
+    private static final String[][] QA_PAIRS = new String[Engine.NUMBER_OF_ROUNDS][2];
+    private static int calculatedResult;
 
-    private static String calculate(String expr) {
-        var exprSplit = expr.split(" ");
-        int operand1 = Integer.parseInt(exprSplit[0]);
-        int operand2 = Integer.parseInt(exprSplit[2]);
+    private static int calculate(int operand1, int operand2, char operator) {
         int result;
 
-        switch (exprSplit[1]) {
-            case "+":
+        switch (operator) {
+            case '+':
                 result = operand1 + operand2;
                 break;
-            case "-":
+            case '-':
                 result = operand1 - operand2;
                 break;
-            case "*":
+            case '*':
                 result = operand1 * operand2;
                 break;
             default:
-                return "";
+                throw new RuntimeException("Unknown operator: " + operator);
         }
-        return Integer.toString(result);
+        return result;
     }
     private static String generateQuestion() {
         final int maxOperandValue = 150;
@@ -40,13 +38,14 @@ public class Calc {
             operand1 = Engine.RAND_GEN.nextInt(maxOperandValueMult);
             operand2 = Engine.RAND_GEN.nextInt(maxOperandValueMult);
         }
+        calculatedResult = calculate(operand1, operand2, operators[operatorIndex]);
         return Integer.toString(operand1) + " " + operators[operatorIndex] + " " + Integer.toString(operand2);
     }
 
     public static void start() {
-        for (int iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
-            QA_PAIRS[0][iter] = generateQuestion();
-            QA_PAIRS[1][iter] = calculate(QA_PAIRS[0][iter]);
+        for (var pair : QA_PAIRS) {
+            pair[0] = generateQuestion();
+            pair[1] = Integer.toString(calculatedResult);
         }
         Engine.runQuestions("What is the result of the expression?", QA_PAIRS);
     }

@@ -7,18 +7,12 @@ import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
 
 import java.util.Scanner;
-//import java.util.InputMismatchException;
 
 class App {
-//    enum MENU_OPTIONS {
-//        EXIT,
-//        GREET,
-//        EVEN,
-//        CALC,
-//        GCD,
-//        PROGRESSION,
-//        PRIME
-    //    }
+    private static String username4Print;
+    public static String getUsername() {
+        return username4Print;
+    }
     private static Scanner sc;
     public static Scanner getScanner() {
         return sc;
@@ -26,6 +20,8 @@ class App {
 
     public static void main(String[] args) {
         sc = new Scanner(System.in);
+        final int exitOption = 0;
+        final int greetOption = 1;
         final int evenOption = 2;
         final int calcOption = 3;
         final int gcdOption = 4;
@@ -43,15 +39,18 @@ class App {
         );
         System.out.print("Your choice: ");
         userGameChoice = sc.nextInt();
-//        try {
-//            userGameChoice = sc.nextInt();
-//        } catch (InputMismatchException e) {
-//            System.out.println("That's not a number, try again.");
-//        }
-        if (userGameChoice != 0) {
-            Engine.introduction();
+
+        if (userGameChoice != exitOption) {
+            System.out.println("Welcome to the Brain Games!");
+            System.out.print("May I have your name? ");
+            username4Print = App.getScanner().next() + "!"; // сразу добавляем '!', чтобы не прибавлять при каждой печати
+            System.out.println("Hello, " + username4Print);
         }
+
         switch (userGameChoice) {
+            case exitOption:
+            case greetOption:
+                break;
             case evenOption:
                 Even.start();
                 break;
@@ -68,6 +67,7 @@ class App {
                 Prime.start();
                 break;
             default:
+                throw new RuntimeException("Unknown game choice: " + userGameChoice);
         }
         sc.close();
     }

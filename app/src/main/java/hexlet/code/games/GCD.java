@@ -3,31 +3,35 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class GCD {
-    private static final String[][] QA_PAIRS = new String[2][Engine.NUMBER_OF_ROUNDS];
+    private static final String[][] QA_PAIRS = new String[Engine.NUMBER_OF_ROUNDS][2];
     private static int currentDivisor; // переменная для временного хранения НОД,
-    // пока не придумал способа лучше (с учетом моего алгоритма) для разделения генерации вопроса и ответа
+
+    // простые числа + 1
+    private static final int[] primesPlus = {1, 2, 3, 5, 7, 11, 13, 17};
+
+    private static int getPrime() {
+        int randIndex = Engine.RAND_GEN.nextInt(primesPlus.length);
+        return primesPlus[randIndex];
+    }
 
     private static String generateQuestion() {
         final int maxDivisorValue = 10;
 
-        // простые числа + 1
-        final int[] primesPlus = {1, 2, 3, 5, 7, 11, 13, 17};
-
-        int randIndex1 = Engine.RAND_GEN.nextInt(primesPlus.length);
-        int randIndex2;
+        int prime1 = getPrime();
+        int prime2;
         do {
-            randIndex2 = Engine.RAND_GEN.nextInt(primesPlus.length);
-        } while (randIndex2 == randIndex1);
+            prime2 = getPrime();
+        } while (prime1 == prime2);
         // алгоритм от обратного, чтобы пользователям было проще
         currentDivisor = Engine.RAND_GEN.nextInt(maxDivisorValue) + 1;
 
-        return (primesPlus[randIndex1] * currentDivisor) + " " + (primesPlus[randIndex2] * currentDivisor);
+        return (prime1 * currentDivisor) + " " + (prime2 * currentDivisor);
     }
 
     public static void start() {
-        for (int iter = 0; iter < Engine.NUMBER_OF_ROUNDS; iter++) {
-            QA_PAIRS[0][iter] = generateQuestion();
-            QA_PAIRS[1][iter] = Integer.toString(currentDivisor); // переписываем переменную каждую итерацию
+        for (var pair : QA_PAIRS) {
+            pair[0] = generateQuestion();
+            pair[1] = Integer.toString(currentDivisor); // переписываем переменную каждую итерацию
         }
         Engine.runQuestions("Find the greatest common divisor of given numbers.", QA_PAIRS);
     }
