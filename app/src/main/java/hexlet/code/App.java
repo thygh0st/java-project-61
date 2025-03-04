@@ -40,7 +40,7 @@ class App {
         System.out.print("Your choice: ");
         userGameChoice = sc.nextInt();
 
-        if ((userGameChoice > exitOption) && (userGameChoice < primeOption)) {
+        if ((userGameChoice >= greetOption) && (userGameChoice <= primeOption)) {
             System.out.println("Welcome to the Brain Games!");
             System.out.print("May I have your name? ");
             username4Print = App.getScanner().next() + "!";
