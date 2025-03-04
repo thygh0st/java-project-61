@@ -40,10 +40,10 @@ class App {
         System.out.print("Your choice: ");
         userGameChoice = sc.nextInt();
 
-        if (userGameChoice != exitOption) {
+        if ((userGameChoice > exitOption) && (userGameChoice < primeOption)) {
             System.out.println("Welcome to the Brain Games!");
             System.out.print("May I have your name? ");
-            username4Print = App.getScanner().next() + "!"; // сразу добавляем '!', чтобы не прибавлять при каждой печати
+            username4Print = App.getScanner().next() + "!";
             System.out.println("Hello, " + username4Print);
         }
 
