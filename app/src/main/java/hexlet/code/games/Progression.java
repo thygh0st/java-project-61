@@ -24,7 +24,7 @@ public class Progression {
         int missingIndex = generateNumber(0, initialProg.length);
 
         String[] pairQA = new String[2];
-        
+
         pairQA[1] = initialProg[missingIndex];
         initialProg[missingIndex] = "..";
 
