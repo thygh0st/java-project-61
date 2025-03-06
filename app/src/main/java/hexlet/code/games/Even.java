@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import  hexlet.code.Engine;
+import static hexlet.code.Utils.generateNumber;
 
 public class Even {
     private static final String[][] QA_PAIRS = new String[Engine.NUMBER_OF_ROUNDS][2];
@@ -14,7 +15,7 @@ public class Even {
     private static String generateQuestion() {
         int randNumber;
         final int maxGameValue = 200;
-        randNumber = Engine.RAND_GEN.nextInt(maxGameValue);
+        randNumber = generateNumber(1, maxGameValue);
 
         return Integer.toString(randNumber);
     }

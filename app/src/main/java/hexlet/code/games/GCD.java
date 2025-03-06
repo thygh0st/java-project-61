@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import static hexlet.code.Utils.generateNumber;
 
 public class GCD {
     private static final String[][] QA_PAIRS = new String[Engine.NUMBER_OF_ROUNDS][2];
@@ -9,7 +10,7 @@ public class GCD {
     private static int getPrime() {
         // простые числа + 1
         final int[] primesPlus = {1, 2, 3, 5, 7, 11, 13, 17};
-        int randIndex = Engine.RAND_GEN.nextInt(primesPlus.length);
+        int randIndex = generateNumber(0, primesPlus.length);
         return primesPlus[randIndex];
     }
 
@@ -22,7 +23,7 @@ public class GCD {
             prime2 = getPrime();
         } while (prime1 == prime2);
         // алгоритм от обратного, чтобы пользователям было проще
-        currentDivisor = Engine.RAND_GEN.nextInt(maxDivisorValue) + 1;
+        currentDivisor = generateNumber(1, maxDivisorValue);
 
         return (prime1 * currentDivisor) + " " + (prime2 * currentDivisor);
     }

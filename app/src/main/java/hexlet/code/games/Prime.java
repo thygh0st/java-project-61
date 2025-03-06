@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import static hexlet.code.Utils.generateNumber;
 
 public class Prime {
     private static final String[][] QA_PAIRS = new String[Engine.NUMBER_OF_ROUNDS][2];
@@ -26,10 +27,10 @@ public class Prime {
         // при некоторых k число будет не простое, но будет делиться либо на 5, либо на 7 (в нашем диапазоне k)
         // ограничиваем k > 1, чтобы не добавлять проверку через цикл
         // генерируем числа: 6k - 1 | 6k | 6k + 1
-        k = Engine.RAND_GEN.nextInt(maxKValue) + 2;
+        k = generateNumber(2, maxKValue);
         int baseNum = baseMult * k;
-        int offset = Engine.RAND_GEN.nextInt(2);
-        int randNumber = ((Engine.RAND_GEN.nextInt(2) == 1) ? (baseNum + offset) : (baseNum - offset));
+        int offset = generateNumber(0, 2);
+        int randNumber = ((generateNumber(0, 2) == 1) ? (baseNum + offset) : (baseNum - offset));
 
         return Integer.toString(randNumber);
     }

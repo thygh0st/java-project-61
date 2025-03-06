@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import static hexlet.code.Utils.generateNumber;
 
 public class Calc {
     private static final String[][] QA_PAIRS = new String[Engine.NUMBER_OF_ROUNDS][2];
@@ -30,13 +31,13 @@ public class Calc {
         char[] operators = {'*', '+', '-'};
         int operand1;
         int operand2;
-        int operatorIndex = Engine.RAND_GEN.nextInt(operators.length);
+        int operatorIndex = generateNumber(0, operators.length);
         if (operatorIndex > 0) {
-            operand1 = Engine.RAND_GEN.nextInt(maxOperandValue);
-            operand2 = Engine.RAND_GEN.nextInt(maxOperandValue);
+            operand1 = generateNumber(0, maxOperandValue);
+            operand2 = generateNumber(0, maxOperandValue);
         } else {
-            operand1 = Engine.RAND_GEN.nextInt(maxOperandValueMult);
-            operand2 = Engine.RAND_GEN.nextInt(maxOperandValueMult);
+            operand1 = generateNumber(0, maxOperandValueMult);
+            operand2 = generateNumber(0, maxOperandValueMult);
         }
         calculatedResult = calculate(operand1, operand2, operators[operatorIndex]);
         return Integer.toString(operand1) + " " + operators[operatorIndex] + " " + Integer.toString(operand2);

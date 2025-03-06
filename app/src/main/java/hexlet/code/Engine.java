@@ -1,10 +1,7 @@
 package hexlet.code;
 
-import java.util.Random;
-
 public class Engine {
     public static final int NUMBER_OF_ROUNDS = 3;
-    public static final Random RAND_GEN = new Random();
 
     public static void runQuestions(String greeting, String[][] pairs) {
         String userAnswer;
