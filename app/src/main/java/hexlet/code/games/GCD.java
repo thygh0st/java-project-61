@@ -8,7 +8,7 @@ public class GCD {
 
     private static int getPrime() {
         // простые числа + 1
-        private static final int[] primesPlus = {1, 2, 3, 5, 7, 11, 13, 17};
+        final int[] primesPlus = {1, 2, 3, 5, 7, 11, 13, 17};
         int randIndex = Engine.RAND_GEN.nextInt(PRIMES_PLUS.length);
         return primesPlus[randIndex];
     }
