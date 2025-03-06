@@ -6,12 +6,11 @@ public class GCD {
     private static final String[][] QA_PAIRS = new String[Engine.NUMBER_OF_ROUNDS][2];
     private static int currentDivisor; // переменная для временного хранения НОД,
 
-    // простые числа + 1
-    private static final int[] PRIMES_PLUS = {1, 2, 3, 5, 7, 11, 13, 17};
-
     private static int getPrime() {
+        // простые числа + 1
+        private static final int[] primesPlus = {1, 2, 3, 5, 7, 11, 13, 17};
         int randIndex = Engine.RAND_GEN.nextInt(PRIMES_PLUS.length);
-        return PRIMES_PLUS[randIndex];
+        return primesPlus[randIndex];
     }
 
     private static String generateQuestion() {
