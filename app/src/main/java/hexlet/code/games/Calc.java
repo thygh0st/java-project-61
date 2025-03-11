@@ -4,9 +4,6 @@ import hexlet.code.Engine;
 import static hexlet.code.Utils.generateNumber;
 
 public class Calc {
-    private static final String[][] QA_PAIRS = new String[Engine.NUMBER_OF_ROUNDS][2];
-    private static int calculatedResult;
-
     private static int calculate(int operand1, int operand2, char operator) {
         int result;
 
@@ -25,7 +22,7 @@ public class Calc {
         }
         return result;
     }
-    private static String generateQuestion() {
+    private static String[] generatePair() {
         final int maxOperandValue = 150;
         final int maxOperandValueMult = 15;
         char[] operators = {'*', '+', '-'};
@@ -39,15 +36,19 @@ public class Calc {
             operand1 = generateNumber(0, maxOperandValueMult);
             operand2 = generateNumber(0, maxOperandValueMult);
         }
-        calculatedResult = calculate(operand1, operand2, operators[operatorIndex]);
-        return Integer.toString(operand1) + " " + operators[operatorIndex] + " " + Integer.toString(operand2);
+        String question = operand1 + " " + operators[operatorIndex] + " " + operand2;
+        String answer = Integer.toString(calculate(operand1, operand2, operators[operatorIndex]));
+
+        return new String[]{question, answer};
     }
 
     public static void start() {
-        for (var pair : QA_PAIRS) {
-            pair[0] = generateQuestion();
-            pair[1] = Integer.toString(calculatedResult);
+        String[][] qaPairs = new String[Engine.NUMBER_OF_ROUNDS][2];
+        for (var pair : qaPairs) {
+            var tempQAPair = generatePair();
+            pair[0] = tempQAPair[0];
+            pair[1] = tempQAPair[1];
         }
-        Engine.runQuestions("What is the result of the expression?", QA_PAIRS);
+        Engine.runQuestions("What is the result of the expression?", qaPairs);
     }
 }

@@ -4,9 +4,6 @@ import hexlet.code.Engine;
 import static hexlet.code.Utils.generateNumber;
 
 public class GCD {
-    private static final String[][] QA_PAIRS = new String[Engine.NUMBER_OF_ROUNDS][2];
-    private static int currentDivisor; // переменная для временного хранения НОД,
-
     private static int getPrime() {
         // простые числа + 1
         final int[] primesPlus = {1, 2, 3, 5, 7, 11, 13, 17};
@@ -14,7 +11,7 @@ public class GCD {
         return primesPlus[randIndex];
     }
 
-    private static String generateQuestion() {
+    private static String[] generatePair() {
         final int maxDivisorValue = 10;
 
         int prime1 = getPrime();
@@ -23,16 +20,21 @@ public class GCD {
             prime2 = getPrime();
         } while (prime1 == prime2);
         // алгоритм от обратного, чтобы пользователям было проще
-        currentDivisor = generateNumber(1, maxDivisorValue);
+        int divisor = generateNumber(1, maxDivisorValue);
 
-        return (prime1 * currentDivisor) + " " + (prime2 * currentDivisor);
+        String question = (prime1 * divisor) + " " + (prime2 * divisor);
+        String answer = Integer.toString(divisor);
+
+        return new String[]{question, answer};
     }
 
     public static void start() {
-        for (var pair : QA_PAIRS) {
-            pair[0] = generateQuestion();
-            pair[1] = Integer.toString(currentDivisor); // переписываем переменную каждую итерацию
+        String[][] qaPairs = new String[Engine.NUMBER_OF_ROUNDS][2];
+        for (var pair : qaPairs) {
+            var tempQAPair = generatePair();
+            pair[0] = tempQAPair[0];
+            pair[1] = tempQAPair[1];
         }
-        Engine.runQuestions("Find the greatest common divisor of given numbers.", QA_PAIRS);
+        Engine.runQuestions("Find the greatest common divisor of given numbers.", qaPairs);
     }
 }

@@ -4,8 +4,6 @@ import hexlet.code.Engine;
 import static hexlet.code.Utils.generateNumber;
 
 public class Progression {
-    private static final String[][] QA_PAIRS = new String[Engine.NUMBER_OF_ROUNDS][2];
-
     private static String[] genProgArray(int startNumber, int increment, int progressionLength) {
         String[] progStrArray = new String[progressionLength];
         for (int i = 0; i < progressionLength; i++) {
@@ -23,22 +21,21 @@ public class Progression {
         var initialProg = genProgArray(startNumber, increment, progressionLength);
         int missingIndex = generateNumber(0, initialProg.length);
 
-        String[] pairQA = new String[2];
-
-        pairQA[1] = initialProg[missingIndex];
+        String answer = initialProg[missingIndex];
         initialProg[missingIndex] = "..";
 
-        pairQA[0] = String.join(" ", initialProg);
+        String question = String.join(" ", initialProg);
 
-        return pairQA;
+        return new String[]{question, answer};
     }
 
     public static void start() {
-        for (String[] pair : QA_PAIRS) {
+        String[][] qaPairs = new String[Engine.NUMBER_OF_ROUNDS][2];
+        for (String[] pair : qaPairs) {
             var tempQAPair = generatePair();
             pair[0] = tempQAPair[0];
             pair[1] = tempQAPair[1];
         }
-        Engine.runQuestions("What number is missing in the progression?", QA_PAIRS);
+        Engine.runQuestions("What number is missing in the progression?", qaPairs);
     }
 }
